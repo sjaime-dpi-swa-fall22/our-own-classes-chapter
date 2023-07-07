@@ -7,20 +7,32 @@
 #  - An instance method, age, that calculates the number of years between today and birthdate
 
 class Person
-  
+  require "date"
+  attr_accessor :first_name
+  attr_accessor :last_name
+  attr_accessor :birthdate
+
+  def full_name
+    return "#{first_name} #{last_name}"
+  end
+
+  def age
+    return ((Date.today - Date.parse(birthdate)).to_i/365)
+  end
+
 end
 
 # Test your instance methods by adding to the end of this file:
 
-#  new_person = Person.new
-#  new_person.first_name = "Joe"
-#  new_person.last_name = "Mama"
-#  new_person.full_name 
+new_person = Person.new
+new_person.first_name = "Joe"
+new_person.last_name = "Mama"
+p new_person.full_name 
 # Output:
 #=>  "Joe Mama"
 
-#  other_person = Person.new
-#  other_person.birthdate = "April 19, 1987"
-#  other_person.age
+other_person = Person.new
+other_person.birthdate = "April 19, 1987"
+p other_person.age
 # Output:
 #=>  45
